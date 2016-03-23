@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.visanet"
+        version="0.7.0">
+
+  <name>VisaNet</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/visanet.js" target="js/visanet.js"/>
+
+  <js-module src="www/visanet.js" name="visanet">
+    <clobbers target="visanet" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="VisaNet">
+        <param name="android-package" value="com.visanet.plugin.VisaNet"/>
+      </feature>
+    </config-file>
+      
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="pe.com.visanet.lib.VisaNetPaymentActivity"
+                      android:theme="@android:style/Theme.Dialog">
+            </activity>
+        </config-file>
+
+    <source-file src="src/android/libs/android-support-v4.jar" target-dir="libs" framework="true" />
+    <source-file src="src/android/libs/TrustDefenderMobile-3.0-105.jar" target-dir="libs" framework="true" />
+    <source-file src="src/android/libs/visanetlib-2.1.7.jar" target-dir="libs" framework="true" />
+    <source-file src="src/android/VisaNet.java" target-dir="src/com/visanet/plugin"/>
+      
+  </platform>
+  
+</plugin>
